@@ -4,7 +4,7 @@ business_unit: Agriculture & Food - Landscapes & Global Change Program
 theme: midday #options are midday, blueberry, sky, teal, mint, and forest
 
 author:  "**Anthony Nadelko**"
-github_link: www.github.com/nad018/
+github_link: www.github.com/nad018/nad018_poster/
 dap_link:  # optional
 photo: resources/img/nad018.jpg
 
