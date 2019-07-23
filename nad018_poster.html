@@ -353,8 +353,8 @@ font-size: 20pt;
 </div>
 <div id="my-synthesis-project" class="section level1">
 <h1>My Synthesis Project</h1>
-<p>The project objective was to develop a machine learning model of evapotranspiration (ET) in irrigated cotton using high frequency measurements from a variety of soil, crop and meteorlogical sensor platforms.</p>
-<p>A set of 10 features were selected. Meteorlogical features included 10 Hz measurements of air temperature, humidity, vapour pressure deficit, 3D wind speed, rainfall and solar radiation. Crop features were the temperatures of canopy leaves, dry reference and ambient air at minute intervals. Soil features consisted of hourly water content and temperature. Target ET flux rates were calculated as the covariance of gas concentrations and vertical wind speed components.</p>
+<p>The project objective was to develop a machine learning model of evapotranspiration (ET) in irrigated cotton using high frequency measurements from a variety of soil, crop canopy and meteorlogical sensor platforms.</p>
+<p>A set of 10 features were selected. Meteorlogical features included 10 Hz measurements of 3D wind speed, humidity, vapour pressure deficit, solar radiation and rainfall. Crop canopy features were temperature measurements of plant leaves, dry leaf reference and ambient air at minute intervals. Soil features consisted of hourly water content and temperature measurements. Target ET flux rates were calculated as the covariance of gas concentrations and vertical wind speed components.</p>
 <p>Replicated features were first averaged then feature data were reduced to 1 hour means. Missing timestamps were infilled, outliers removed and data gaps interpolated to complete the time series. Features were scaled then hyperparameters tuned by nested cross validation prior to Lasso and Ridge regression analysis. The inital iterations were trained chronologically on 80% of data and tested on the following 20% of data.</p>
 </div>
 <div id="my-digital-toolbox" class="section level1">
