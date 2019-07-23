@@ -1,10 +1,10 @@
 ---
 title: Machine Learning Evapotranspiration
-business_unit: Agriculture & Food - Landscapes & Global Change Program
+business_unit: CSIRO Agriculture & Food  -  Landscapes & Global Change Program
 theme: midday #options are midday, blueberry, sky, teal, mint, and forest
 
 author:  "**Anthony Nadelko**"
-github_link: www.github.com/nad018/nad018_poster/
+github_link: www.github.com/nad018/
 dap_link:  # optional
 photo: resources/img/nad018.jpg
 
@@ -49,22 +49,20 @@ df_ml_1hr_scaled_12 <- read_csv("//Nexus/Home/n/nad018/synthesis/machine_learnin
 Research Technician, Soil Process & Function - prior experience coding CRBASIC dataloggers, ladder logic PLC's and C+ microcontrollers. Previous work pattern involved data visualisation and analysis in Excel, further processing in open-source software, then presenting results in Excel graphs and Word tables.
 
 # My Synthesis Project
-The project objective was to develop a machine learning model of evapotranspiration (ET) in irrigated cotton.
+The project objective was to develop a machine learning model of evapotranspiration (ET) in irrigated cotton using high frequency measurements from a variety of soil, crop and meteorlogical sensor platforms.
 
-The raw data consisted of high frequency measurements from a wide variety of soil, crop and atmospheric sensor platforms. A set of 10 features and the target ET were selected from the raw data set. The target and feature data were reduced to 1 hour interval time series prior to analysis by two machine learning regression algorithms. 
+A set of 10 features were selected. Meteorlogical features included 10 Hz measurements of air temperature, humidity, vapour pressure deficit, 3D wind speed, rainfall and solar radiation.  Crop features were the temperatures of canopy leaves, dry reference and ambient air at minute intervals.  Soil features consisted of hourly water content and temperature. Target ET flux rates were calculated as the covariance of gas concentrations and vertical wind speed components.
 
-Hourly ET flux rates were calculated as the covariance of 10 Hz gas concentrations and wind vertical component speeds. Replicated features were averaged prior to frequency reduction. Soil water content and soil temperature measurements were natively hourly. One minute leaf temperature, dry leaf temperature, ambient temperature, humidity, vapour pressure deficit, wind speed, rainfall and solar radiation were reduced to hourly means. 
-
-Missing hourly timestamps were infilled, outliers removed and data gaps interpolated to generate time series of the target and each feature. The features were min-max scaled and hyperparameters tuned by nested cross validation prior to Lasso and Ridge regression analysis. The inital iterations were trained chronologically on 80% of data and tested on the following 20% of data. 
+Replicated features were first averaged then feature data were reduced to 1 hour means. Missing timestamps were infilled, outliers removed and data gaps interpolated to complete the time series. Features were scaled then hyperparameters tuned by nested cross validation prior to Lasso and Ridge regression analysis. The inital iterations were trained chronologically on 80% of data and tested on the following 20% of data. 
 
 # My Digital Toolbox
-Both R and Python were used in this project. R libraries  used were tidyverse, padr, imputeTS, lubridate, and scales. Python modules used included numpy, pandas, scatter_matrix, pyplot, scale, cross_val_score, TimeSeriesSplit, Ridge, RidgeCV, Lasso, Lasso CV, mean_squared_error, r2_score. All of these digital tools were learned since starting Data School.
+Both R and Python were used in this project. R libraries used consisted of tidyverse, padr, imputeTS, lubridate, and scales. Python modules included numpy, pandas, scatter_matrix, pyplot, scale, cross_val_score, TimeSeriesSplit, Ridge, RidgeCV, Lasso, Lasso CV, mean_squared_error, r2_score. All of these digital tools were learned since starting Data School.
 
-## Favourite tool (optional)
-My favorite Python tool was Mayplotlib for visualising data as it has capabilities not available from ggplot in R. In R I found the 'padr' library to be a very effective tool for analysing dataframes for time series gaps and inserting rows with missing timestamps infilled.  
+## Favourite tool
+My favorite Python tool was Mayplotlib for visualising data as it has capabilities not available from ggplot in R. In R I found the 'padr' library to be a very efficient tool for analysing dataframes for time series gaps, inserting rows and infilling missing timestamps.  
 
 # My time went ...
-Processing the raw data with differing file structures and from a variety of source directories took 80% of the project time. After raw data processing most of the remaining time was used aquiring the knowledge to develop the machine learning workflow and to make appropriate subjective decisions for machine learning validation, training and testing. One very surprising finding was the regression coefficients indicated the sensor expected to be most important was 3rd in rank in Ridge and dropped entirely in Lasso.
+Processing the raw data with differing file structures and from a variety of source directories took 80% of the project time. After raw data processing most of the remaining time was used aquiring the knowledge to develop the machine learning workflow and to make appropriate subjective decisions for machine learning validation, training and testing. One very surprising finding was the regression coefficients indicated the feature expected to be most important was ranked 3rd by the Ridge algorithm and dropped entirely by Lasso.
 
 # Next steps
 Ongoing work would include improving predicted ET accuracy by sliding window validation to better incorporate the influence of the increasing crop canopy cover over time, as well as examining the effect of reduced feature sets. Also of value would be applying CO2 gas emmission rate measurements as the model target. Related time series models may also be developed for forecasting of ET and CO2 emission rates.
@@ -74,6 +72,8 @@ Ongoing work would include improving predicted ET accuracy by sliding window val
 ![](resources/img/systemcrop.jpg){width=1200px}
 <br/>
 
+<br/>
+<br/>
 **Target and Features Dataframe**
 ![](resources/img/dataframe.JPG){width=1400px}
 
@@ -81,6 +81,7 @@ Ongoing work would include improving predicted ET accuracy by sliding window val
 #knitr::kable(head(df_ml_1hr_scaled_12, n = 5), format = "html") %>% 
 #  kable_styling("striped")
 ```
+<br/>
 <br/>
 **Machine Learning Results**
 ![](resources/img/eddy_covar.jpg){width=1400px}
